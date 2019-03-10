@@ -4,11 +4,12 @@ email: giovanna.severo96@gmail.com
 description: "."
 baseurl: ""
 url: "http://giovanna96.github.io"
-title_description: ""
+title_description: "Hi, I am Giovanna, I have a degree in Science and Technology and now I'm a Computer Engeneering student at Universidade Federal do Rio Grande do Norte. This is my personal blog where I'll post my projects."
+title_image: "https://scontent.fnat1-1.fna.fbcdn.net/v/t1.0-9/21463048_1421336871318440_2094234529809251487_n.jpg?_nc_cat=107&_nc_ht=scontent.fnat1-1.fna&oh=6a299415d2defba4a62df6674a702373&oe=5D1BCB88"
 google_analytics: ""
-disqus_account: cartenoire
-github_repository: https://github.com/jacobtomlinson/carte-noire
-addthis_id: ra-513c6fa83da6ec67
+disqus_account: 
+github_repository: 
+addthis_id: 
 post_limit: 5
 
 # Social usernames/URLs

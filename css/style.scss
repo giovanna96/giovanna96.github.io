@@ -46,11 +46,17 @@ html {
 body {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
-	background-color: $dark;
+	/*background-color: $dark;*/
 	color: $white;
 	font-size: 16px;
 	height: 100%;
-	width: 100%
+	width: 100%;
+	background-image:url("3.png");
+	background-attachment: fixed;
+	background-position: center;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
 }
 
 a, a:active {
@@ -129,6 +135,7 @@ ul {
 
 .content-panel {
 	background-color: $medium;
+	opacity:.9;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	padding-left: 30px;
