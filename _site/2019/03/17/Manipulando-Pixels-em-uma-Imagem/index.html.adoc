@@ -1,9 +1,0 @@
-
-:layout: default
-= Sample Page
-
-This is a sample page composed in AsciiDoc.
-Jekyll converts it to HTML using {uri-asciidoctor}[Asciidoctor].
-
-[source,ruby]
-puts "Hello, World!"
