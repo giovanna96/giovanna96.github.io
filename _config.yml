@@ -36,3 +36,7 @@ kramdown:
 
 permalink: pretty
 exclude: [vendor]
+
+
+plugins_dir:
+- jekyll-asciidoc
