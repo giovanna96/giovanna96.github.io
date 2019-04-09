@@ -43,6 +43,6 @@ for(int i=x1;i<x2;i++){
 ```
 Na Figura abaixo é possível observar o resultado da aplicação:
 <center><img src="https://i.imgur.com/cUYH5pY.png" style="height:200px;"/></center>
-<center><img src="https://i.imgur.com/cUYH5pY.png" style="height:200px;"/></center>
+<center><img src="https://i.imgur.com/WOVujQi.png" style="height:200px;"/></center>
 
 
