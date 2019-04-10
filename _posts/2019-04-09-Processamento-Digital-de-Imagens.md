@@ -142,13 +142,13 @@ for(int i=0; i<height; i++){
 ```
 Para o caso em que o número de bolhas ultrapasse 255 nãos será possível fazer a contagem, uma vez que terão mais bolhas do que a quantidade de rótulos.
  
-<center>Imagem Bolhas<img src="https://i.imgur.com/LLL1sp7.png" style="height:200px;"/></center>
+<center>Imagem Bolhas<img src="https://i.imgur.com/jKoKEkb.png" style="height:200px;"/></center>
 
 
-<center>Imagem Bolhas Com Falhas<img src="https://i.imgur.com/LLL1sp7.png" style="height:200px;"/></center>
+<center>Imagem Bolhas Com Falhas<img src="https://i.imgur.com/Oi4d9lT.png" style="height:200px;"/></center>
 
 
-<center>Imagem Após Contagem<img src="https://i.imgur.com/LLL1sp7.png" style="height:200px;"/></center>
+<center>Imagem Após Contagem<img src="https://i.imgur.com/qmgYIYq.png" style="height:200px;"/></center>
 
 
 
