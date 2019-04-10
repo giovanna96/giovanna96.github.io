@@ -9,7 +9,7 @@ tags:
  - digital image processing
 ---
 ## Resumo
-Esse post consiste na aplicação dos conceitos estudados na primeira Unidade da disciplina de Processamento Digital de Imagens DCA0445 do curso de Engenharia de Computação da Universisdade Federal do Rio Grande do Norte. Os Exercícios apresentados foram desenvolvidos por [Giovanna Severo][1] e por [João Victor Costa][2] .
+Esse post consiste na aplicação dos conceitos estudados na primeira Unidade da disciplina de Processamento Digital de Imagens DCA0445 do curso de Engenharia de Computação da Universisdade Federal do Rio Grande do Norte. Os Exercícios apresentados foram desenvolvidos por [Giovanna Severo][1] e por [João Victor Costa][2], todos os códigos podem ser encontrados [AQUI][3] .
 
 ## Manipulando pixels em uma imagem
 Exercício 1:
@@ -142,9 +142,13 @@ for(int i=0; i<height; i++){
 ```
 Para o caso em que o número de bolhas ultrapasse 255 nãos será possível fazer a contagem, uma vez que terão mais bolhas do que a quantidade de rótulos.
  
-<center><img src="https://i.imgur.com/LLL1sp7.png" style="height:200px;"/>Imagem Bolhas</center>
-<center><img src="https://i.imgur.com/LLL1sp7.png" style="height:200px;"/>Imagem Bolhas Com Falhas</center>
-<center><img src="https://i.imgur.com/LLL1sp7.png" style="height:200px;"/>Imagem Após Contagem</center>
+<center>Imagem Bolhas<img src="https://i.imgur.com/LLL1sp7.png" style="height:200px;"/></center>
+
+
+<center>Imagem Bolhas Com Falhas<img src="https://i.imgur.com/LLL1sp7.png" style="height:200px;"/></center>
+
+
+<center>Imagem Após Contagem<img src="https://i.imgur.com/LLL1sp7.png" style="height:200px;"/></center>
 
 
 
@@ -153,3 +157,4 @@ Para o caso em que o número de bolhas ultrapasse 255 nãos será possível faze
 
 [1]: http://giovanna96.github.io
 [2]: http://joaovictor1996.github.io
+[3]: https://github.com/joaovictor1996/joaovictor1996.github.io/tree/master/PDI
