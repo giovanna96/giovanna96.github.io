@@ -1,0 +1,58 @@
+<h2 id="resumo">Resumo</h2>
+<p>Esse post consiste na aplicação dos conceitos estudados na primeira Unidade da disciplina de Processamento Digital de Imagens DCA0445 do curso de Engenharia de Computação da Universisdade Federal do Rio Grande do Norte. Os Exercícios apresentados foram desenvolvidos por <a href="http://giovanna96.github.io">Giovanna Severo</a> e por <a href="http://joaovictor1996.github.io">João Victor Costa</a> .</p>
+
+<h2 id="manipulando-pixels-em-uma-imagem">Manipulando pixels em uma imagem</h2>
+<p>Exercício 1:
+O primeiro exercício baseia-se em calcular o negativo de uma determinada região de uma imagem.
+Primeiramente é feita a declaração da matriz de valores da imagem, declarou-se no código duas variáveis que serão solicitadas ao usuário, representando as coordenadas x e y de dois pontos delimitando uma região retangular da imagem e foi feita a leitura da imagem que sofrerá o cálculo.</p>
+
+<p>```C
+Mat image;
+Vec3b val;
+int x1, x2, y1, y2; //coordenadas passadas pelo usuário</p>
+
+<p>image= imread(“biel.png”,CV_LOAD_IMAGE_GRAYSCALE); 
+if(!image.data) //teste para saber se a imagem foi realmente carregada
+cout « “Nao abriu o arquivo!” « endl;</p>
+
+<p>namedWindow(“janela”,WINDOW_AUTOSIZE);</p>
+
+<p>cout « “Digite as coordenadas X1 e Y1, seguidos de enter\n”;
+cin » x1 » y1;
+cout « “Digite as coordenadas X2 e Y2, seguidos de enter\n”;
+cin » x2 » y2;
+```
+O cálculo do negativo é realizado a partir de dois laços for  que irão varrer a matriz de valores da imagem dentro do intervalo determinado(pontos informados pelo usuário) fazendo a subtração do valor 255 em cada pixel.</p>
+
+<p><code class="highlighter-rouge">C
+for(int i=x1;i&lt;x2;i++){
+ for(int j=y1;j&lt;y2;j++){
+  image.at&lt;uchar&gt;(i,j)=255-image.at&lt;uchar&gt;(i,j); //substitui o valor do pixel pela subtração entre 255 e o valor dele
+ }
+}
+</code>
+Na Figura abaixo é possível observar o resultado da aplicação:</p>
+<center><img src="https://i.imgur.com/cUYH5pY.png" style="height:200px;" /></center>
+<center><img src="https://i.imgur.com/WOVujQi.png" style="height:200px;" /></center>
+
+<p>Exercício 2:
+No segundo exercício é solicitado que a imagem seja dividida em quatro quadrantes e que seja realizada a troca dessas regiões.
+Para resolução desse exercício identificou-se qual o tamanho(altura e largura) da matriz da imagem utilizada e criou-se uma matriz auxiliar cópia, após isso foram utilizados dois laços for para preencher cada quadrante da matriz cópia pelos valores dos quadrantes opostos, requisitando os valores na matriz da imagem original.</p>
+
+<p>```C
+largura=image.size().width; //recebe o valor da largura
+  altura=image.size().height; //recebe o valor da altura
+  cout«largura«“\n”«altura«“\n”;</p>
+
+<p>image.copyTo(copia); //copia a imagem original para uma cópia</p>
+
+<p>for(int i=0;i&lt;largura/2;i++){ //transfere para a cópia os valores de cada quadrante da imagem original
+    for(int j=0;j&lt;altura/2;j++){
+      copia.at<uchar>((largura/2)+i,(altura/2)+j)=image.at<uchar>(i,j);
+      copia.at<uchar>(i,j)=image.at<uchar>((largura/2)+i,(altura/2)+j);
+      copia.at<uchar>(i,(altura/2)+j)=image.at<uchar>((largura/2)+i,j);
+      copia.at<uchar>((largura/2)+i,j)=image.at<uchar>(i,(altura/2)+j);
+    }
+  }
+```</uchar></uchar></uchar></uchar></uchar></uchar></uchar></uchar></p>
+

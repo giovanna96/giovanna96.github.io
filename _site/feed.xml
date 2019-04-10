@@ -5,279 +5,153 @@
     <description>.</description>
     <link>http://giovanna96.github.io/</link>
     <atom:link href="http://giovanna96.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 26 Mar 2019 22:03:56 -0300</pubDate>
-    <lastBuildDate>Tue, 26 Mar 2019 22:03:56 -0300</lastBuildDate>
+    <pubDate>Tue, 09 Apr 2019 22:09:52 -0300</pubDate>
+    <lastBuildDate>Tue, 09 Apr 2019 22:09:52 -0300</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
-        <title>Manipulando Pixels Em Uma Imagem</title>
-        <description>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
+        <title>Processamento Digital de Imagens Primeira Unidade</title>
+        <description>&lt;h2 id=&quot;resumo&quot;&gt;Resumo&lt;/h2&gt;
+&lt;p&gt;Esse post consiste na aplicação dos conceitos estudados na primeira Unidade da disciplina de Processamento Digital de Imagens DCA0445 do curso de Engenharia de Computação da Universisdade Federal do Rio Grande do Norte. Os Exercícios apresentados foram desenvolvidos por &lt;a href=&quot;http://giovanna96.github.io&quot;&gt;Giovanna Severo&lt;/a&gt; e por &lt;a href=&quot;http://joaovictor1996.github.io&quot;&gt;João Victor Costa&lt;/a&gt; .&lt;/p&gt;
 
-    &lt;head&gt;
-&lt;meta charset=&quot;utf-8&quot; /&gt;
-&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-&lt;title&gt;Manipulando Pixels Em Uma Imagem&lt;/title&gt;
-&lt;meta name=&quot;description&quot; content=&quot;.&quot;&gt;
+&lt;h2 id=&quot;manipulando-pixels-em-uma-imagem&quot;&gt;Manipulando pixels em uma imagem&lt;/h2&gt;
+&lt;p&gt;Exercício 1:&lt;br /&gt;
+O primeiro exercício baseia-se em calcular o negativo de uma determinada região de uma imagem.&lt;br /&gt;
+Primeiramente é feita a declaração da matriz de valores da imagem, declarou-se no código duas variáveis que serão solicitadas ao usuário, representando as coordenadas x e y de dois pontos delimitando uma região retangular da imagem e foi feita a leitura da imagem que sofrerá o cálculo.&lt;/p&gt;
 
-&lt;link rel=&quot;stylesheet&quot; href=&quot;//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css&quot;&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css&quot;&gt;
-&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; media=&quot;all&quot; href=&quot;/css/style.css&quot; /&gt;
-&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; media=&quot;all&quot; href=&quot;/css/jquery.mmenu.all.css&quot; /&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/highlightjs.piperita.css&quot;&gt;
+&lt;pre&gt;&lt;code class=&quot;language-C&quot;&gt;Mat image;
+Vec3b val;
+int x1, x2, y1, y2; //coordenadas passadas pelo usuário
 
-&lt;!-- Favicons generated at http://realfavicongenerator.net/ --&gt;
-&lt;link rel=&quot;apple-touch-icon&quot; sizes=&quot;57x57&quot; href=&quot;/favicons/apple-touch-icon-57x57.png&quot;&gt;
-&lt;link rel=&quot;apple-touch-icon&quot; sizes=&quot;60x60&quot; href=&quot;/favicons/apple-touch-icon-60x60.png&quot;&gt;
-&lt;link rel=&quot;apple-touch-icon&quot; sizes=&quot;72x72&quot; href=&quot;/favicons/apple-touch-icon-72x72.png&quot;&gt;
-&lt;link rel=&quot;apple-touch-icon&quot; sizes=&quot;76x76&quot; href=&quot;/favicons/apple-touch-icon-76x76.png&quot;&gt;
-&lt;link rel=&quot;apple-touch-icon&quot; sizes=&quot;114x114&quot; href=&quot;/favicons/apple-touch-icon-114x114.png&quot;&gt;
-&lt;link rel=&quot;apple-touch-icon&quot; sizes=&quot;120x120&quot; href=&quot;/favicons/apple-touch-icon-120x120.png&quot;&gt;
-&lt;link rel=&quot;apple-touch-icon&quot; sizes=&quot;144x144&quot; href=&quot;/favicons/apple-touch-icon-144x144.png&quot;&gt;
-&lt;link rel=&quot;apple-touch-icon&quot; sizes=&quot;152x152&quot; href=&quot;/favicons/apple-touch-icon-152x152.png&quot;&gt;
-&lt;link rel=&quot;apple-touch-icon&quot; sizes=&quot;180x180&quot; href=&quot;/favicons/apple-touch-icon-180x180.png&quot;&gt;
-&lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;/favicons/favicon-32x32.png&quot; sizes=&quot;32x32&quot;&gt;
-&lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;/favicons/android-chrome-192x192.png&quot; sizes=&quot;192x192&quot;&gt;
-&lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;/favicons/favicon-96x96.png&quot; sizes=&quot;96x96&quot;&gt;
-&lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;/favicons/favicon-16x16.png&quot; sizes=&quot;16x16&quot;&gt;
-&lt;link rel=&quot;manifest&quot; href=&quot;/favicons/manifest.json&quot;&gt;
-&lt;link rel=&quot;shortcut icon&quot; href=&quot;/favicons/favicon.ico&quot;&gt;
-&lt;meta name=&quot;msapplication-TileColor&quot; content=&quot;#da532c&quot;&gt;
-&lt;meta name=&quot;msapplication-TileImage&quot; content=&quot;/favicons/mstile-144x144.png&quot;&gt;
-&lt;meta name=&quot;msapplication-config&quot; content=&quot;/favicons/browserconfig.xml&quot;&gt;
-&lt;meta name=&quot;theme-color&quot; content=&quot;#ffffff&quot;&gt;
+image= imread(&quot;biel.png&quot;,CV_LOAD_IMAGE_GRAYSCALE); 
+if(!image.data) //teste para saber se a imagem foi realmente carregada
+cout &amp;lt;&amp;lt; &quot;Nao abriu o arquivo!&quot; &amp;lt;&amp;lt; endl;
 
+namedWindow(&quot;janela&quot;,WINDOW_AUTOSIZE);
 
-
-
-
-&lt;/head&gt;
-
-
-    &lt;body&gt;
-
-    &lt;nav id=&quot;my-menu&quot;&gt;
-  &lt;div&gt;
-    &lt;p&gt;Giovanna Severo&lt;/p&gt;
-
-    &lt;ul class=&quot;pages&quot;&gt;
-      &lt;li&gt;&lt;a href=&quot;/&quot;&gt;&lt;i class=&quot;fa fa-home&quot;&gt;&lt;/i&gt; Home&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;/posts/&quot;&gt;&lt;i class=&quot;fa fa-archive&quot;&gt;&lt;/i&gt; All Posts&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;/search/&quot;&gt;&lt;i class=&quot;fa fa-search&quot;&gt;&lt;/i&gt; Search&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;p class=&quot;links&quot;&gt;
-  
-  &lt;a href=&quot;https://www.linkedin.com/in/giovanna-severo-a68191150/&quot; target=&quot;_new&quot;&gt;&lt;i class=&quot;fa fa-linkedin&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-  
-  
-  &lt;a href=&quot;https://www.facebook.com/giovanna.severo.33?ref=bookmarks&quot; target=&quot;_new&quot;&gt;&lt;i class=&quot;fa fa-facebook&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-  &lt;a href=&quot;https://github.com/giovanna96&quot; target=&quot;_new&quot;&gt;&lt;i class=&quot;fa fa-github-alt&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-  
-  &lt;a href=&quot;https://www.instagram.com/giovannasevero&quot; target=&quot;_new&quot;&gt;&lt;i class=&quot;fa fa-instagram&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-  
-  &lt;a href=&quot;/feed.xml&quot; target=&quot;_new&quot;&gt;&lt;i class=&quot;fa fa-rss&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-&lt;/p&gt;
-
-  &lt;/div&gt;
-&lt;/nav&gt;
-&lt;div class=&quot;menu-button&quot; href=&quot;#menu&quot;&gt;&lt;i class=&quot;fa fa-bars&quot;&gt;&lt;/i&gt;&lt;/div&gt;
-
-
-    &lt;div class=&quot;page-content&quot;&gt;
-      &lt;div class=&quot;wrap&quot;&gt;
-      
-
-&lt;div class=&quot;container-fluid single&quot;&gt;
-  &lt;div class=&quot;row&quot;&gt;
-
-    &lt;div itemscope itemtype=&quot;http://schema.org/Article&quot; class=&quot;col-md-12 article&quot;&gt;
-      
-
-      &lt;h1 class=&quot;header&quot; itemprop=&quot;name&quot;&gt;Manipulando Pixels Em Uma Imagem&lt;/h1&gt;
-
-      &lt;div class=&quot;author&quot;&gt;
-        &lt;small&gt;&lt;i&gt;
-          
-          on &lt;span itemprop=&quot;datePublished&quot; content=&quot;2014-08-28&quot;&gt;March 17, 2019&lt;/span&gt;
-          
-        &lt;/i&gt;&lt;/small&gt;
-      &lt;/div&gt;
-
-      &lt;div class=&quot;read-time&quot;&gt;
-        &lt;small&gt;
-          1 minute read
-        &lt;/small&gt;
-      &lt;/div&gt;
-
-      &lt;div class=&quot;content-panel content&quot;&gt;
-
-        
-
-        &lt;span itemprop=&quot;articleBody&quot;&gt;&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This is a sample page composed in AsciiDoc.
-Jekyll converts it to HTML using {uri-asciidoctor}[Asciidoctor].&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;puts &quot;Hello, World!&quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;/span&gt;
-
-        
-
-        
-
-        
-
-      &lt;/div&gt;
-
-      
-
-      
-
-      
-
-    &lt;/div&gt;
-
-  &lt;/div&gt;
-
-&lt;/div&gt;
-
-
-
-      &lt;/div&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;footer clearfix&quot;&gt;
-  &lt;div class=&quot;col-md-6&quot;&gt;
-    Made with &lt;i class=&quot;fa fa-heart&quot;&gt;&lt;/i&gt; by &lt;a href=&quot;https://twitter.com/_JacobTomlinson&quot;&gt;Jacob Tomlinson&lt;/a&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;col-md-6&quot;&gt;
-    &amp;lt;/&amp;gt; on &lt;a href=&quot;https://github.com/jacobtomlinson/carte-noire&quot;&gt;Github&lt;/a&gt; &amp;nbsp;&lt;i class=&quot;fa fa-github-alt&quot;&gt;&lt;/i&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;script src=&quot;//code.jquery.com/jquery-1.11.0.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;/js/jquery.mmenu.min.all.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js&quot;&gt;&lt;/script&gt;
-&lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-   $(document).ready(function() {
-      $(&quot;#my-menu&quot;).mmenu().on( &quot;closed.mm&quot;, function() {
-            $(&quot;.menu-button&quot;).show();
-         });
-      $(&quot;.menu-button&quot;).click(function() {
-        $(&quot;.menu-button&quot;).hide();
-        $(&quot;#my-menu&quot;).trigger(&quot;open.mm&quot;);
-      });
-   });
-&lt;/script&gt;
-
-
-
-
-&lt;script type=&quot;text/javascript&quot;&gt;
-  var _gaq = _gaq || [];
-  _gaq.push([&#39;_setAccount&#39;, &#39;&#39;]);
-          _gaq.push([&#39;_trackPageview&#39;]);
-  (function () {
-      var ga = document.createElement(&#39;script&#39;);
-      ga.type = &#39;text/javascript&#39;;
-      ga.async = true;
-      ga.src = (&#39;https:&#39; == document.location.protocol ? &#39;https://ssl&#39; : &#39;http://www&#39;) + &#39;.google-analytics.com/ga.js&#39;;
-
-      var s = document.getElementsByTagName(&#39;script&#39;)[0];
-      s.parentNode.insertBefore(ga, s);
-  })();
-&lt;/script&gt;
-
-
-
-    &lt;/body&gt;
-&lt;/html&gt;
-</description>
-        <pubDate>Sun, 17 Mar 2019 00:00:00 -0300</pubDate>
-        <link>http://giovanna96.github.io/2019/03/17/Manipulando-Pixels-em-uma-Imagem/</link>
-        <guid isPermaLink="true">http://giovanna96.github.io/2019/03/17/Manipulando-Pixels-em-uma-Imagem/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Manipulando Pixels Em Uma Imagem</title>
-        <description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This is a sample page composed in AsciiDoc.
-Jekyll converts it to HTML using {uri-asciidoctor}[Asciidoctor].&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;puts &quot;Hello, World!&quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description>
-        <pubDate>Sun, 17 Mar 2019 00:00:00 -0300</pubDate>
-        <link>http://giovanna96.github.io/2019/03/17/Manipulando-Pixels-em-uma-Imagem/</link>
-        <guid isPermaLink="true">http://giovanna96.github.io/2019/03/17/Manipulando-Pixels-em-uma-Imagem/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Using thumbnails</title>
-        <description>&lt;p&gt;Carte Noire is designed to start each article with an all-white image as a&lt;br /&gt;
-thumbnail. These are created by adding a &lt;code class=&quot;highlighter-rouge&quot;&gt;thumbnail&lt;/code&gt; parameter to the article’s&lt;br /&gt;
-&lt;a href=&quot;http://jekyllrb.com/docs/frontmatter/&quot;&gt;YAML frontmatter&lt;/a&gt;. This thumbnail parameter is processed in one of two ways,&lt;br /&gt;
-images specified in &lt;code class=&quot;highlighter-rouge&quot;&gt;_data/thumbnails.yml&lt;/code&gt; or using &lt;a href=&quot;http://fortawesome.github.io/Font-Awesome/&quot;&gt;Font Awesome&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;images&quot;&gt;Images&lt;/h2&gt;
-
-&lt;p&gt;To use your own custom images as a thumbnail you must upload them to a web available&lt;br /&gt;
-location (I use &lt;a href=&quot;http://imgur.com/&quot;&gt;Imgur&lt;/a&gt;) and then you need to add the url to &lt;code class=&quot;highlighter-rouge&quot;&gt;_data/thumbnail.yml&lt;/code&gt;&lt;br /&gt;
-with an associated keyword.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jekyll: &quot;http://i.imgur.com/aRQcGSi.png&quot;
+cout &amp;lt;&amp;lt; &quot;Digite as coordenadas X1 e Y1, seguidos de enter\n&quot;;
+cin &amp;gt;&amp;gt; x1 &amp;gt;&amp;gt; y1;
+cout &amp;lt;&amp;lt; &quot;Digite as coordenadas X2 e Y2, seguidos de enter\n&quot;;
+cin &amp;gt;&amp;gt; x2 &amp;gt;&amp;gt; y2;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;p&gt;O cálculo do negativo é realizado a partir de dois laços for  que irão varrer a matriz de valores da imagem dentro do intervalo determinado(pontos informados pelo usuário) fazendo a subtração do valor 255 em cada pixel.&lt;/p&gt;
 
-&lt;p&gt;You then add a &lt;code class=&quot;highlighter-rouge&quot;&gt;thumbnail&lt;/code&gt; option to the article’s frontmatter and provide the keyword&lt;br /&gt;
-for that thumbnail.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;thumbnail: jekyll
+&lt;pre&gt;&lt;code class=&quot;language-C&quot;&gt;for(int i=x1;i&amp;lt;x2;i++){
+ for(int j=y1;j&amp;lt;y2;j++){
+  image.at&amp;lt;uchar&amp;gt;(i,j)=255-image.at&amp;lt;uchar&amp;gt;(i,j); //substitui o valor do pixel pela subtração entre 255 e o valor dele
+ }
+}
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;p&gt;Na Figura abaixo é possível observar o resultado da aplicação:&lt;/p&gt;
+&lt;center&gt;&lt;img src=&quot;https://i.imgur.com/cUYH5pY.png&quot; style=&quot;height:200px;&quot; /&gt;&lt;/center&gt;
+&lt;center&gt;&lt;img src=&quot;https://i.imgur.com/WOVujQi.png&quot; style=&quot;height:200px;&quot; /&gt;&lt;/center&gt;
 
-&lt;p&gt;This allows you to re-use thumbnails across multiple articles without having to&lt;br /&gt;
-specify the url each time.&lt;/p&gt;
+&lt;p&gt;Exercício 2:&lt;br /&gt;
+No segundo exercício é solicitado que a imagem seja dividida em quatro quadrantes e que seja realizada a troca dessas regiões.&lt;br /&gt;
+Para resolução desse exercício identificou-se qual o tamanho(altura e largura) da matriz da imagem utilizada e criou-se&lt;br /&gt;
+uma matriz auxiliar cópia, após isso foram utilizados dois laços for para preencher cada quadrante da matriz cópia pelos valores dos quadrantes opostos, requisitando os valores na matriz da imagem original.&lt;/p&gt;
 
-&lt;h2 id=&quot;font-awesome&quot;&gt;Font Awesome&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&quot;language-C&quot;&gt;  largura=image.size().width; //recebe o valor da largura
+  altura=image.size().height; //recebe o valor da altura
+  cout&amp;lt;&amp;lt;largura&amp;lt;&amp;lt;&quot;\n&quot;&amp;lt;&amp;lt;altura&amp;lt;&amp;lt;&quot;\n&quot;;
 
-&lt;p&gt;If jekyll can’t find a corresponding image in your &lt;code class=&quot;highlighter-rouge&quot;&gt;thumbnail.yml&lt;/code&gt; file then it&lt;br /&gt;
-will assume you want to use a Font Awesome icon instead. You can find the full&lt;br /&gt;
-list of Font Awesome icons &lt;a href=&quot;http://fortawesome.github.io/Font-Awesome/icons/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+  image.copyTo(copia); //copia a imagem original para uma 
 
-&lt;p&gt;So for example if your article is about android and you want to use the &lt;a href=&quot;http://fortawesome.github.io/Font-Awesome/icon/android/&quot;&gt;android icon&lt;/a&gt;&lt;br /&gt;
-from font awesome you can just specify the following in your frontmatter.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;thumbnail: android
+  for(int i=0;i&amp;lt;largura/2;i++){ //transfere para a cópia os valores de cada quadrante da imagem original
+    for(int j=0;j&amp;lt;altura/2;j++){
+      copia.at&amp;lt;uchar&amp;gt;((largura/2)+i,(altura/2)+j)=image.at&amp;lt;uchar&amp;gt;(i,j);
+      copia.at&amp;lt;uchar&amp;gt;(i,j)=image.at&amp;lt;uchar&amp;gt;((largura/2)+i,(altura/2)+j);
+      copia.at&amp;lt;uchar&amp;gt;(i,(altura/2)+j)=image.at&amp;lt;uchar&amp;gt;((largura/2)+i,j);
+      copia.at&amp;lt;uchar&amp;gt;((largura/2)+i,j)=image.at&amp;lt;uchar&amp;gt;(i,(altura/2)+j);
+    }
+  }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;center&gt;&lt;img src=&quot;https://i.imgur.com/LLL1sp7.png&quot; style=&quot;height:200px;&quot; /&gt;&lt;/center&gt;
 
-&lt;p&gt;Then in the future if you decide you want to use your own android icon you can just&lt;br /&gt;
-add it to &lt;code class=&quot;highlighter-rouge&quot;&gt;_data/thumbnails.yml&lt;/code&gt; which will override it for all articles using&lt;br /&gt;
-the android thumbnail.&lt;/p&gt;
+&lt;h2 id=&quot;preenchendo-regies&quot;&gt;Preenchendo Regiões&lt;/h2&gt;
+&lt;p&gt;Exercício:&lt;br /&gt;
+O exercício baseia-se na contagem de bolhas em uma imagem, nesse problema foi abordada uma estratégia de labeling(Rotulamento) em que uma imagem binária será percorrida na procura de pixels de valores diferentes do fundo, uma vez que um pixel de valor diferente é encontrado aplica-se o algoritmo floodfill para preencher o aglomerado de pixels de cada objeto.&lt;br /&gt;
+Inicialmente foi necessário eliminar os elementos das laterais, já que não é possível identificar se é uma bolha não sendo possível identificar os buracos, para isso utilizou-se dois laços for que percorrem as laterais da imagem, um para a vertical e outro para a horizontal e foi adicionada uma condição if para caso o pixel seja diferente de zero(valor do fundo) seja atribuído a ele esse valor.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-C&quot;&gt;for(int i=0; i&amp;lt;height; i++){ //percorre as bordas verticais para eliminar as bolhas presentes nela
+      if(image.at&amp;lt;uchar&amp;gt;(i,0) == 255){
+		p.x=0;
+		p.y=i;
+		floodFill(image,p,0); //pinta a bolha com a cor do fundo
+	  }
+      if(image.at&amp;lt;uchar&amp;gt;(i,255) == 255){
+		p.x=255;
+		p.y=i;
+		floodFill(image,p,0); //pinta a bolha com a cor do fundo
+	  }
+}
+
+for(int y=0; y&amp;lt;width; y++){ //percorre as bordas horizontais para eliminar as bolhas presentes nela
+      if(image.at&amp;lt;uchar&amp;gt;(0,y) == 255){
+		p.x=y;
+		p.y=0;
+		floodFill(image,p,0); //pinta a bolha com a cor do fundo
+	  }
+      if(image.at&amp;lt;uchar&amp;gt;(255,y) == 255){
+		p.x=y;
+		p.y=255;
+		floodFill(image,p,0); //pinta a bolha com a cor do fundo
+	  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Após isso é necessário percorrer a imagem por completo em busca dos pixels de valor 255(valor do contorno das bolhas) caso seja encontrado soma-se um ao valor de objetos  e faz-se o rotulamento atribuindo o valor do incremento a cada pixel encontrado. A partir de dois laços for a matriz foi percorrida pixel a pixel e a condição if verificou o valor dos pixels somando 1 a variável de controle da quantidade de objetos a cada valor 255 encontrado e com o algoritmo floodfill atribuiu-se o valor do incremento ao aglomerado.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-C&quot;&gt;for(int i=0; i&amp;lt;height; i++){ //percorre toda a imagem procurando pelas bolhas
+    for(int j=0; j&amp;lt;width; j++){
+      if(image.at&amp;lt;uchar&amp;gt;(i,j) == 255){
+		nobjects++; //incrementa a quantidade de bolhas
+		p.x=j;
+		p.y=i;
+		floodFill(image,p,nobjects); //pinta a bolha com o valor do incremento
+	  }
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Por último foi feita a contagem do número de bolhas que contêm falhas(buracos em seu contorno) para isso mudou-se o valor do fundo e percorreu a imagem com laços for e foram adicionadas duas condições uma para verificar a presença de buracos e fazendo uma marcação para evitar contar a bolha encontrada mais de uma vez e outra condição para verificar se a bolha já foi contada.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-C&quot;&gt;p.x = 0;
+p.y = 0;
+floodFill(image,p,100); //pinta o fundo com o valor 100
+
+for(int i=0; i&amp;lt;height; i++){
+    for(int j=0; j&amp;lt;width; j++){
+      if(image.at&amp;lt;uchar&amp;gt;(i,j) == 0 &amp;amp;&amp;amp; image.at&amp;lt;uchar&amp;gt;(i-1,j) != 255){ //percorre a imagem procurando por pixels que possuem o valor igual a 0 e o pixel anterior diferente de 255
+		com_buracos++;
+		p.x=j;
+		p.y=i;
+		floodFill(image,p,100); //pinta o buraco com a cor do fundo
+		p.x=j;
+		p.y=i-1;
+		floodFill(image,p,255); //pinta a bolha de branco
+        }
+	if(image.at&amp;lt;uchar&amp;gt;(i,j) == 0 &amp;amp;&amp;amp; image.at&amp;lt;uchar&amp;gt;(i-1,j) == 255){
+		p.x=j;
+		p.y=i;
+		floodFill(image,p,100); //pinta o buraco com a cor do fundo
+        }
+      }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Para o caso em que o número de bolhas ultrapasse 255 nãos será possível fazer a contagem, uma vez que terão mais bolhas do que a quantidade de rótulos.&lt;/p&gt;
 
 </description>
-        <pubDate>Sun, 08 Jun 2014 09:32:18 -0300</pubDate>
-        <link>http://giovanna96.github.io/jekyll/2014/06/08/using-thumbnails/</link>
-        <guid isPermaLink="true">http://giovanna96.github.io/jekyll/2014/06/08/using-thumbnails/</guid>
+        <pubDate>Tue, 09 Apr 2019 16:44:18 -0300</pubDate>
+        <link>http://giovanna96.github.io/digital/image/processing/2019/04/09/Processamento-Digital-de-Imagens/</link>
+        <guid isPermaLink="true">http://giovanna96.github.io/digital/image/processing/2019/04/09/Processamento-Digital-de-Imagens/</guid>
         
-        <category>thumbnails</category>
-        
-        <category>carte noire</category>
+        <category>digital image processing</category>
         
         
-        <category>jekyll</category>
+        <category>digital</category>
+        
+        <category>image</category>
+        
+        <category>processing</category>
         
       </item>
     

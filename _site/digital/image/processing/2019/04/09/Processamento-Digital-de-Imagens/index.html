@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Processamento Digital de Imagens Primeira Unidade</title>
+<meta name="description" content=".">
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" media="all" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/css/jquery.mmenu.all.css" />
+<link rel="stylesheet" href="/css/highlightjs.piperita.css">
+
+<!-- Favicons generated at http://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/favicons/manifest.json">
+<link rel="shortcut icon" href="/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png">
+<meta name="msapplication-config" content="/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+</head>
+
+
+    <body>
+
+    <nav id="my-menu">
+  <div>
+    <p>Giovanna Severo</p>
+
+    <ul class="pages">
+      <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+      <li><a href="/posts/"><i class="fa fa-archive"></i> All Posts</a></li>
+      <li><a href="/search/"><i class="fa fa-search"></i> Search</a></li>
+    </ul>
+
+    <p class="links">
+  
+  <a href="https://www.linkedin.com/in/giovanna-severo-a68191150/" target="_new"><i class="fa fa-linkedin"></i></a>
+  
+  
+  <a href="https://www.facebook.com/giovanna.severo.33?ref=bookmarks" target="_new"><i class="fa fa-facebook"></i></a>
+  <a href="https://github.com/giovanna96" target="_new"><i class="fa fa-github-alt"></i></a>
+  
+  <a href="https://www.instagram.com/giovannasevero" target="_new"><i class="fa fa-instagram"></i></a>
+  
+  <a href="/feed.xml" target="_new"><i class="fa fa-rss"></i></a>
+</p>
+
+  </div>
+</nav>
+<div class="menu-button" href="#menu"><i class="fa fa-bars"></i></div>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      
+
+<div class="container-fluid single">
+  <div class="row">
+
+    <div itemscope itemtype="http://schema.org/Article" class="col-md-12 article">
+      
+      <div class="thumb">
+        <i class="fa fa-PDI fa-4x"></i>
+      </div>
+      
+
+      <h1 class="header" itemprop="name">Processamento Digital de Imagens Primeira Unidade</h1>
+
+      <div class="author">
+        <small><i>
+          
+          on <span itemprop="datePublished" content="2014-08-28">April 9, 2019</span>
+           under digital
+        </i></small>
+      </div>
+
+      <div class="read-time">
+        <small>
+          5 minute read
+        </small>
+      </div>
+
+      <div class="content-panel content">
+
+        
+
+        <span itemprop="articleBody"><h2 id="resumo">Resumo</h2>
+<p>Esse post consiste na aplicação dos conceitos estudados na primeira Unidade da disciplina de Processamento Digital de Imagens DCA0445 do curso de Engenharia de Computação da Universisdade Federal do Rio Grande do Norte. Os Exercícios apresentados foram desenvolvidos por <a href="http://giovanna96.github.io">Giovanna Severo</a> e por <a href="http://joaovictor1996.github.io">João Victor Costa</a> .</p>
+
+<h2 id="manipulando-pixels-em-uma-imagem">Manipulando pixels em uma imagem</h2>
+<p>Exercício 1:<br />
+O primeiro exercício baseia-se em calcular o negativo de uma determinada região de uma imagem.<br />
+Primeiramente é feita a declaração da matriz de valores da imagem, declarou-se no código duas variáveis que serão solicitadas ao usuário, representando as coordenadas x e y de dois pontos delimitando uma região retangular da imagem e foi feita a leitura da imagem que sofrerá o cálculo.</p>
+
+<pre><code class="language-C">Mat image;
+Vec3b val;
+int x1, x2, y1, y2; //coordenadas passadas pelo usuário
+
+image= imread("biel.png",CV_LOAD_IMAGE_GRAYSCALE); 
+if(!image.data) //teste para saber se a imagem foi realmente carregada
+cout &lt;&lt; "Nao abriu o arquivo!" &lt;&lt; endl;
+
+namedWindow("janela",WINDOW_AUTOSIZE);
+
+cout &lt;&lt; "Digite as coordenadas X1 e Y1, seguidos de enter\n";
+cin &gt;&gt; x1 &gt;&gt; y1;
+cout &lt;&lt; "Digite as coordenadas X2 e Y2, seguidos de enter\n";
+cin &gt;&gt; x2 &gt;&gt; y2;
+</code></pre>
+<p>O cálculo do negativo é realizado a partir de dois laços for  que irão varrer a matriz de valores da imagem dentro do intervalo determinado(pontos informados pelo usuário) fazendo a subtração do valor 255 em cada pixel.</p>
+
+<pre><code class="language-C">for(int i=x1;i&lt;x2;i++){
+ for(int j=y1;j&lt;y2;j++){
+  image.at&lt;uchar&gt;(i,j)=255-image.at&lt;uchar&gt;(i,j); //substitui o valor do pixel pela subtração entre 255 e o valor dele
+ }
+}
+</code></pre>
+<p>Na Figura abaixo é possível observar o resultado da aplicação:</p>
+<center><img src="https://i.imgur.com/cUYH5pY.png" style="height:200px;" /></center>
+<center><img src="https://i.imgur.com/WOVujQi.png" style="height:200px;" /></center>
+
+<p>Exercício 2:<br />
+No segundo exercício é solicitado que a imagem seja dividida em quatro quadrantes e que seja realizada a troca dessas regiões.<br />
+Para resolução desse exercício identificou-se qual o tamanho(altura e largura) da matriz da imagem utilizada e criou-se<br />
+uma matriz auxiliar cópia, após isso foram utilizados dois laços for para preencher cada quadrante da matriz cópia pelos valores dos quadrantes opostos, requisitando os valores na matriz da imagem original.</p>
+
+<pre><code class="language-C">  largura=image.size().width; //recebe o valor da largura
+  altura=image.size().height; //recebe o valor da altura
+  cout&lt;&lt;largura&lt;&lt;"\n"&lt;&lt;altura&lt;&lt;"\n";
+
+  image.copyTo(copia); //copia a imagem original para uma 
+
+  for(int i=0;i&lt;largura/2;i++){ //transfere para a cópia os valores de cada quadrante da imagem original
+    for(int j=0;j&lt;altura/2;j++){
+      copia.at&lt;uchar&gt;((largura/2)+i,(altura/2)+j)=image.at&lt;uchar&gt;(i,j);
+      copia.at&lt;uchar&gt;(i,j)=image.at&lt;uchar&gt;((largura/2)+i,(altura/2)+j);
+      copia.at&lt;uchar&gt;(i,(altura/2)+j)=image.at&lt;uchar&gt;((largura/2)+i,j);
+      copia.at&lt;uchar&gt;((largura/2)+i,j)=image.at&lt;uchar&gt;(i,(altura/2)+j);
+    }
+  }
+</code></pre>
+<center><img src="https://i.imgur.com/LLL1sp7.png" style="height:200px;" /></center>
+
+<h2 id="preenchendo-regies">Preenchendo Regiões</h2>
+<p>Exercício:<br />
+O exercício baseia-se na contagem de bolhas em uma imagem, nesse problema foi abordada uma estratégia de labeling(Rotulamento) em que uma imagem binária será percorrida na procura de pixels de valores diferentes do fundo, uma vez que um pixel de valor diferente é encontrado aplica-se o algoritmo floodfill para preencher o aglomerado de pixels de cada objeto.<br />
+Inicialmente foi necessário eliminar os elementos das laterais, já que não é possível identificar se é uma bolha não sendo possível identificar os buracos, para isso utilizou-se dois laços for que percorrem as laterais da imagem, um para a vertical e outro para a horizontal e foi adicionada uma condição if para caso o pixel seja diferente de zero(valor do fundo) seja atribuído a ele esse valor.</p>
+
+<pre><code class="language-C">for(int i=0; i&lt;height; i++){ //percorre as bordas verticais para eliminar as bolhas presentes nela
+      if(image.at&lt;uchar&gt;(i,0) == 255){
+		p.x=0;
+		p.y=i;
+		floodFill(image,p,0); //pinta a bolha com a cor do fundo
+	  }
+      if(image.at&lt;uchar&gt;(i,255) == 255){
+		p.x=255;
+		p.y=i;
+		floodFill(image,p,0); //pinta a bolha com a cor do fundo
+	  }
+}
+
+for(int y=0; y&lt;width; y++){ //percorre as bordas horizontais para eliminar as bolhas presentes nela
+      if(image.at&lt;uchar&gt;(0,y) == 255){
+		p.x=y;
+		p.y=0;
+		floodFill(image,p,0); //pinta a bolha com a cor do fundo
+	  }
+      if(image.at&lt;uchar&gt;(255,y) == 255){
+		p.x=y;
+		p.y=255;
+		floodFill(image,p,0); //pinta a bolha com a cor do fundo
+	  }
+}
+</code></pre>
+<p>Após isso é necessário percorrer a imagem por completo em busca dos pixels de valor 255(valor do contorno das bolhas) caso seja encontrado soma-se um ao valor de objetos  e faz-se o rotulamento atribuindo o valor do incremento a cada pixel encontrado. A partir de dois laços for a matriz foi percorrida pixel a pixel e a condição if verificou o valor dos pixels somando 1 a variável de controle da quantidade de objetos a cada valor 255 encontrado e com o algoritmo floodfill atribuiu-se o valor do incremento ao aglomerado.</p>
+
+<pre><code class="language-C">for(int i=0; i&lt;height; i++){ //percorre toda a imagem procurando pelas bolhas
+    for(int j=0; j&lt;width; j++){
+      if(image.at&lt;uchar&gt;(i,j) == 255){
+		nobjects++; //incrementa a quantidade de bolhas
+		p.x=j;
+		p.y=i;
+		floodFill(image,p,nobjects); //pinta a bolha com o valor do incremento
+	  }
+	}
+}
+</code></pre>
+<p>Por último foi feita a contagem do número de bolhas que contêm falhas(buracos em seu contorno) para isso mudou-se o valor do fundo e percorreu a imagem com laços for e foram adicionadas duas condições uma para verificar a presença de buracos e fazendo uma marcação para evitar contar a bolha encontrada mais de uma vez e outra condição para verificar se a bolha já foi contada.</p>
+
+<pre><code class="language-C">p.x = 0;
+p.y = 0;
+floodFill(image,p,100); //pinta o fundo com o valor 100
+
+for(int i=0; i&lt;height; i++){
+    for(int j=0; j&lt;width; j++){
+      if(image.at&lt;uchar&gt;(i,j) == 0 &amp;&amp; image.at&lt;uchar&gt;(i-1,j) != 255){ //percorre a imagem procurando por pixels que possuem o valor igual a 0 e o pixel anterior diferente de 255
+		com_buracos++;
+		p.x=j;
+		p.y=i;
+		floodFill(image,p,100); //pinta o buraco com a cor do fundo
+		p.x=j;
+		p.y=i-1;
+		floodFill(image,p,255); //pinta a bolha de branco
+        }
+	if(image.at&lt;uchar&gt;(i,j) == 0 &amp;&amp; image.at&lt;uchar&gt;(i-1,j) == 255){
+		p.x=j;
+		p.y=i;
+		floodFill(image,p,100); //pinta o buraco com a cor do fundo
+        }
+      }
+}
+</code></pre>
+<p>Para o caso em que o número de bolhas ultrapasse 255 nãos será possível fazer a contagem, uma vez que terão mais bolhas do que a quantidade de rótulos.</p>
+
+</span>
+
+        
+
+        
+
+        
+        <div class="tags">
+          <small>
+          <i class="fa fa-tags"></i>
+            digital image processing
+          </small>
+        </div>
+        
+
+      </div>
+
+      
+
+      
+
+      
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="footer clearfix">
+  <div class="col-md-6">
+    Made with <i class="fa fa-heart"></i> by <a href="https://twitter.com/_JacobTomlinson">Jacob Tomlinson</a>
+  </div>
+  <div class="col-md-6">
+    &lt;/&gt; on <a href="https://github.com/jacobtomlinson/carte-noire">Github</a> &nbsp;<i class="fa fa-github-alt"></i>
+  </div>
+</div>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="/js/jquery.mmenu.min.all.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+   $(document).ready(function() {
+      $("#my-menu").mmenu().on( "closed.mm", function() {
+            $(".menu-button").show();
+         });
+      $(".menu-button").click(function() {
+        $(".menu-button").hide();
+        $("#my-menu").trigger("open.mm");
+      });
+   });
+</script>
+
+
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '']);
+          _gaq.push(['_trackPageview']);
+  (function () {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+    </body>
+</html>
