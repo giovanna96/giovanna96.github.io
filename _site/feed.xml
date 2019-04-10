@@ -5,8 +5,8 @@
     <description>.</description>
     <link>http://giovanna96.github.io/</link>
     <atom:link href="http://giovanna96.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 09 Apr 2019 22:09:52 -0300</pubDate>
-    <lastBuildDate>Tue, 09 Apr 2019 22:09:52 -0300</lastBuildDate>
+    <pubDate>Tue, 09 Apr 2019 22:15:59 -0300</pubDate>
+    <lastBuildDate>Tue, 09 Apr 2019 22:15:59 -0300</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -138,6 +138,10 @@ for(int i=0; i&amp;lt;height; i++){
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Para o caso em que o número de bolhas ultrapasse 255 nãos será possível fazer a contagem, uma vez que terão mais bolhas do que a quantidade de rótulos.&lt;/p&gt;
+
+&lt;center&gt;&lt;img src=&quot;https://i.imgur.com/LLL1sp7.png&quot; style=&quot;height:200px;&quot; /&gt;Imagem Bolhas&lt;/center&gt;
+&lt;center&gt;&lt;img src=&quot;https://i.imgur.com/LLL1sp7.png&quot; style=&quot;height:200px;&quot; /&gt;Imagem Bolhas Com Falhas&lt;/center&gt;
+&lt;center&gt;&lt;img src=&quot;https://i.imgur.com/LLL1sp7.png&quot; style=&quot;height:200px;&quot; /&gt;Imagem Após Contagem&lt;/center&gt;
 
 </description>
         <pubDate>Tue, 09 Apr 2019 16:44:18 -0300</pubDate>
