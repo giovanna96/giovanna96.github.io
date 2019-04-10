@@ -8,11 +8,12 @@ thumbnail: PDI
 tags:
  - digital image processing
 ---
-## Resumo
+
+# Resumo
 Esse post consiste na aplicação dos conceitos estudados na primeira Unidade da disciplina de Processamento Digital de Imagens DCA0445 do curso de Engenharia de Computação da Universisdade Federal do Rio Grande do Norte. Os Exercícios apresentados foram desenvolvidos por [Giovanna Severo][1] e por [João Victor Costa][2], todos os códigos podem ser encontrados [AQUI][3] .
 
-## Manipulando pixels em uma imagem
-Exercício 1:
+- # Manipulando pixels em uma imagem
+**Exercício 1:**
 O primeiro exercício baseia-se em calcular o negativo de uma determinada região de uma imagem.
 Primeiramente é feita a declaração da matriz de valores da imagem, declarou-se no código duas variáveis que serão solicitadas ao usuário, representando as coordenadas x e y de dois pontos delimitando uma região retangular da imagem e foi feita a leitura da imagem que sofrerá o cálculo.
 
@@ -41,11 +42,13 @@ for(int i=x1;i<x2;i++){
  }
 }
 ```
-Na Figura abaixo é possível observar o resultado da aplicação:
-<center><img src="https://i.imgur.com/cUYH5pY.png" style="height:200px;"/></center>
-<center><img src="https://i.imgur.com/WOVujQi.png" style="height:200px;"/></center>
+[Código Completo][4]
 
-Exercício 2:
+Na Figura abaixo é possível observar o resultado da aplicação:
+<center>Imagem Original<img src="https://i.imgur.com/cUYH5pY.png" style="height:200px;"/></center>
+<center>Negativo<img src="https://i.imgur.com/WOVujQi.png" style="height:200px;"/></center>
+
+**Exercício 2:**
 No segundo exercício é solicitado que a imagem seja dividida em quatro quadrantes e que seja realizada a troca dessas regiões.
 Para resolução desse exercício identificou-se qual o tamanho(altura e largura) da matriz da imagem utilizada e criou-se
 uma matriz auxiliar cópia, após isso foram utilizados dois laços for para preencher cada quadrante da matriz cópia pelos valores dos quadrantes opostos, requisitando os valores na matriz da imagem original. 
@@ -66,10 +69,12 @@ uma matriz auxiliar cópia, após isso foram utilizados dois laços for para pre
     }
   }
 ```
-<center><img src="https://i.imgur.com/LLL1sp7.png" style="height:200px;"/></center>
+[Código Completo][5]
 
-## Preenchendo Regiões
-Exercício:
+<center>Regiões Trocadas<img src="https://i.imgur.com/LLL1sp7.png" style="height:200px;"/></center>
+
+- # Preenchendo Regiões
+**Exercício:**
 O exercício baseia-se na contagem de bolhas em uma imagem, nesse problema foi abordada uma estratégia de labeling(Rotulamento) em que uma imagem binária será percorrida na procura de pixels de valores diferentes do fundo, uma vez que um pixel de valor diferente é encontrado aplica-se o algoritmo floodfill para preencher o aglomerado de pixels de cada objeto.
 Inicialmente foi necessário eliminar os elementos das laterais, já que não é possível identificar se é uma bolha não sendo possível identificar os buracos, para isso utilizou-se dois laços for que percorrem as laterais da imagem, um para a vertical e outro para a horizontal e foi adicionada uma condição if para caso o pixel seja diferente de zero(valor do fundo) seja atribuído a ele esse valor.
 
@@ -141,15 +146,123 @@ for(int i=0; i<height; i++){
 }
 ```
 Para o caso em que o número de bolhas ultrapasse 255 nãos será possível fazer a contagem, uma vez que terão mais bolhas do que a quantidade de rótulos.
- 
-<center>Imagem Bolhas<img src="https://i.imgur.com/jKoKEkb.png" style="height:200px;"/></center>
+[Código Completo][6]
 
-
-<center>Imagem Bolhas Com Falhas<img src="https://i.imgur.com/Oi4d9lT.png" style="height:200px;"/></center>
+<center>Imagem Bolhas<img src="https://i.imgur.com/Oi4d9lT.png" style="height:200px;"/></center>
 
 
 <center>Imagem Após Contagem<img src="https://i.imgur.com/qmgYIYq.png" style="height:200px;"/></center>
 
+- # Manipulação de histogramas:
+**Exercício 1:** 
+Nesse exercício é proposto que seja desenvolvido um programa para fazer a equalização do histograma de uma imagem, considerando que as imagens geradas são em tons de cinza. 
+Para criação do histograma equalizado, fez-se a captura da imagem e utilizou-se a função *equalizeHist* fazer a equalização, depois utilizando a função *calcHist* foi calculado o histograma da imagem equalizada e com o a função *normalize* foi possível normalizar os valores calculados, após isso é atribuído a imagem do histograma o valor 0 e feito o desenho do gráfico de barras com a função *line*.
+
+```C
+  while(1){
+    cap >> image;
+	cvtColor(image,image,CV_BGR2GRAY);
+
+	equalizeHist(image, equalizado);//equalizando a imagem
+
+	calcHist(&image,1,0,Mat(),histC,1,&nbins,&histrange,uniform,acummulate);//criando o histograma da imagem origianl
+	normalize(histC, histC, 0, histImg.rows, NORM_MINMAX, -1, Mat());
+  	histImg.setTo(Scalar(0));
+
+	calcHist(&equalizado,1,0,Mat(),equa,1,&nbins,&histrange,uniform,acummulate);//criando o histograma da imagem equalizada
+	normalize(equa, equa, 0, histImg.rows, NORM_MINMAX, -1, Mat());
+  	histEqu.setTo(Scalar(0));
+
+	for(int i=0; i<nbins; i++){
+      line(histImg,
+           Point(i, histh),
+           Point(i, histh-cvRound(histC.at<float>(i))),
+           Scalar(255), 1, 8, 0);
+      line(histEqu,
+           Point(i, histh),
+           Point(i, histh-cvRound(equa.at<float>(i))),
+           Scalar(255), 1, 8, 0);
+    }
+
+	histImg.copyTo(image(Rect(0, 0,nbins, histh)));//copiando o histograma para a imagem original
+	imshow("Original", image);
+
+histEqu.copyTo(equalizado(Rect(0, 0,nbins, histh)));//copiando o histograma para a imagem equalizada
+```
+[Código Completo][7]
+
+<center>Imagem em escala de cinza<img src="https://i.imgur.com/9lmDQB6.png" style="height:200px;"/></center>
+
+<center>Imagem Equalizada Histograma<img src="https://i.imgur.com/0oVuOyV.png" style="height:200px;"/></center>
+
+- # Exercício 2:
+O problema consiste na formulação de um detector de movimento fazendo o cálculo do histograma continuamente e comparando o valor com o anterior, quando um movimento é detectado deve-se lançar um alarme.
+Para identificar se há movimento fez-se o cálculo e normalização do histograma de  com as funções *calcHist* e *normalize* de duas imagens atribuídas a uma escala de cinza, e foi feita a comparação dos dois histogramas com a função *compareHist*, após isso é feito um teste em uma estrutura de seleção if que confere se a comparação ultrapassou o limiar pré determinado, caso esse valor seja maior que a tolerância o movimento é detectado e a mensagem de movimento é imprimida, caso a comparação seja menor que a tolerância seu valor é imprimido na tela e o movimento não é detectado.
+
+```C
+ while(1){
+	cap >> image1;//captura a primeira imagem
+	cvtColor(image1,cinza1,CV_BGR2GRAY);
+
+	calcHist(&cinza1,1,0,Mat(),hist1,1,&nbins,&histrange,uniform,acummulate);//calcula o histograma da primeira imagem
+	normalize(hist1, hist1, 0, histImage.rows, NORM_MINMAX, -1, Mat());
+  	histImage.setTo(Scalar(0));
+
+	cap >> image2;//captura a segunda imagem
+	cvtColor(image2,cinza2,CV_BGR2GRAY);
+	
+	calcHist(&cinza2,1,0,Mat(),hist2,1,&nbins,&histrange,uniform,acummulate);//calcula o histograma da segunda imagem
+	normalize(hist1, hist1, 0, histImage.rows, NORM_MINMAX, -1, Mat());
+
+	comparacao=compareHist(hist2,hist1,CV_COMP_BHATTACHARYYA);//compara os dois histogramas 
+
+	if(comparacao*100>tolerancia){//compara para saber se existe movimento
+		cout << "Movimento!!" << endl;
+	}
+	else{
+		cout << comparacao << endl;
+}
+```
+[Código Completo][8]
+
+- # Filtragem no domínio espacial I
+**Exercício:**
+Para esse exercício foi solicitado a criação de uma funcionalidade extra no código dado previamente, de forma que seja permitido calcular o laplaciano do gaussiano da imagem.
+Foi acrescentada a opção *p* no menu do código representando a opção de aplicação do filtro laplaciano e para o cálculo foi adicionada uma máscara que será convoluída na matriz da imagem em que se deseja aplicar o filtro.
+
+```C
+
+void menu(){
+  cout << "\npressione a tecla para ativar o filtro: \n"
+	"a - calcular modulo\n"
+    "m - media\n"
+    "g - gauss\n"
+    "v - vertical\n"
+	"h - horizontal\n"
+    "l - laplaciano\n"
+    "p - laplgauss\n"
+	"esc - sair\n";
+}
+```
+```C
+float laplgauss[]={0,0,1,0,0,   //máscara usada para fazer o laplaciano do gaussiano
+					 0,1,2,1,0,
+					 1,2,-16,2,1,
+					 0,1,2,1,0,
+0,0,1,0,0};
+```
+```C
+case 'p':
+	  menu();
+      mask = Mat(5, 5, CV_32F, laplgauss);//utilizando a máscara
+      printmask(mask);
+      break;
+    default:
+break;
+```
+[Código Completo][9]
+
+<center>Imagem com filtro laplaciano<img src="https://i.imgur.com/ZBMuC3T.png" style="height:200px;"/></center>
 
 
 
@@ -158,3 +271,9 @@ Para o caso em que o número de bolhas ultrapasse 255 nãos será possível faze
 [1]: http://giovanna96.github.io
 [2]: http://joaovictor1996.github.io
 [3]: https://github.com/joaovictor1996/joaovictor1996.github.io/tree/master/PDI
+[4]: https://github.com/joaovictor1996/joaovictor1996.github.io/blob/master/PDI/regions/regions.cpp
+[5]: https://github.com/joaovictor1996/joaovictor1996.github.io/tree/master/PDI/trocaregioes
+[6]: https://github.com/joaovictor1996/joaovictor1996.github.io/blob/master/PDI/labeling/labeling.cpp
+[7]: https://github.com/joaovictor1996/joaovictor1996.github.io/blob/master/PDI/histograma/equalize.cpp
+[8]: https://github.com/joaovictor1996/joaovictor1996.github.io/blob/master/PDI/histograma/motiondetector.cpp
+[9]: https://github.com/joaovictor1996/joaovictor1996.github.io/blob/master/PDI/laplgauss/laplgauss.cpp
