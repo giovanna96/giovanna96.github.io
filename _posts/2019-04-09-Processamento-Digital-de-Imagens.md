@@ -193,7 +193,7 @@ histEqu.copyTo(equalizado(Rect(0, 0,nbins, histh)));//copiando o histograma para
 
 <center>Imagem em escala de cinza<img src="https://i.imgur.com/9lmDQB6.png" style="height:200px;"/></center>
 
-<center>Imagem Equalizada Histograma<img src="https://i.imgur.com/0oVuOyV.png" style="height:200px;"/></center>
+<center>Imagem Equalizada<img src="https://i.imgur.com/0oVuOyV.png" style="height:200px;"/></center>
 
 - # Exercício 2:
 O problema consiste na formulação de um detector de movimento fazendo o cálculo do histograma continuamente e comparando o valor com o anterior, quando um movimento é detectado deve-se lançar um alarme.
