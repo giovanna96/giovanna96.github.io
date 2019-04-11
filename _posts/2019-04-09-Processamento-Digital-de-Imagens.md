@@ -10,7 +10,7 @@ tags:
 ---
 
 # Resumo
-Esse post consiste na aplicação dos conceitos estudados na primeira Unidade da disciplina de Processamento Digital de Imagens DCA0445 do curso de Engenharia de Computação da Universisdade Federal do Rio Grande do Norte. Os Exercícios apresentados foram desenvolvidos por [Giovanna Severo][1] e por [João Victor Costa][2], todos os códigos podem ser encontrados [AQUI][3] .
+Este post consiste na aplicação dos conceitos estudados na primeira Unidade da disciplina de Processamento Digital de Imagens DCA0445 do curso de Engenharia de Computação da Universisdade Federal do Rio Grande do Norte. Os Exercícios apresentados foram desenvolvidos por [Giovanna Severo][1] e por [João Victor Costa][2], todos os códigos podem ser encontrados [AQUI][3] .
 
 - # Manipulando pixels em uma imagem
 **Exercício 1:**
