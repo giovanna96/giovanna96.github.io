@@ -156,7 +156,7 @@ Para o caso em que o número de bolhas ultrapasse 255 nãos será possível faze
 - # Manipulação de histogramas:
 **Exercício 1:** 
 Nesse exercício é proposto que seja desenvolvido um programa para fazer a equalização do histograma de uma imagem, considerando que as imagens geradas são em tons de cinza. 
-Para criação do histograma equalizado, fez-se a captura da imagem e utilizou-se a função *equalizeHist* fazer a equalização, depois utilizando a função *calcHist* foi calculado o histograma da imagem equalizada e com o a função *normalize* foi possível normalizar os valores calculados, após isso é atribuído a imagem do histograma o valor 0 e feito o desenho do gráfico de barras com a função *line*.
+Para criação do histograma equalizado, fez-se a captura da imagem e utilizou-se a função *equalizeHist* para fazer a equalização, depois utilizando a função *calcHist* foi calculado o histograma da imagem equalizada e com o a função *normalize* foi possível normalizar os valores calculados, após isso é atribuído a imagem do histograma o valor 0 e feito o desenho do gráfico de barras com a função *line*.
 
 ```C
   while(1){
@@ -197,7 +197,7 @@ histEqu.copyTo(equalizado(Rect(0, 0,nbins, histh)));//copiando o histograma para
 
 - # Exercício 2:
 O problema consiste na formulação de um detector de movimento fazendo o cálculo do histograma continuamente e comparando o valor com o anterior, quando um movimento é detectado deve-se lançar um alarme.
-Para identificar se há movimento fez-se o cálculo e normalização do histograma de  com as funções *calcHist* e *normalize* de duas imagens atribuídas a uma escala de cinza, e foi feita a comparação dos dois histogramas com a função *compareHist*, após isso é feito um teste em uma estrutura de seleção if que confere se a comparação ultrapassou o limiar pré determinado, caso esse valor seja maior que a tolerância o movimento é detectado e a mensagem de movimento é imprimida, caso a comparação seja menor que a tolerância seu valor é imprimido na tela e o movimento não é detectado.
+Para identificar se há movimento fez-se o cálculo e a normalização do histograma com as funções *calcHist* e *normalize* de duas imagens atribuídas a uma escala de cinza, e foi feita a comparação dos dois histogramas com a função *compareHist*, após isso é feito um teste em uma estrutura de seleção if que confere se a comparação ultrapassou o limiar pré determinado, caso esse valor seja maior que a tolerância o movimento é detectado e a mensagem de movimento é imprimida, caso a comparação seja menor que a tolerância seu valor é imprimido na tela e o movimento não é detectado.
 
 ```C
  while(1){
