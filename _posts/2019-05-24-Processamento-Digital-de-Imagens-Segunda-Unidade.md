@@ -14,7 +14,7 @@ Este post consiste na aplicação dos conceitos estudados na segunda unidade da 
 - # Filtragem no domínio da frequência
 **Exercício 1:**
 O exercício de baseia na aplicação de um filtro homomórfico para melhorar imagens com iluminação irregular.
-Para a realização do exercício é necessário fazer a transformada de fourier dos pontos da matriz da imagem e realizar a troca dos quandrantes da imagem para poder aplicar o filtro para atenuar as frequências baixas e manter as frequências altas, para determinar o filtro usou-se a seguinte expressão:
+Para a realização do exercício é necessário fazer a transformada de fourier dos pontos da matriz da imagem e realizar a troca dos quandrantes, para que assim seja possível aplicar o filtro atenuando as frequências baixas e mantendo as frequências altas, o filtro foi determinado pela seguinte expressão:
 <center>Filtro H(u,v)<img src="https://i.imgur.com/8ogq5zD.png" style="height:200px;"/></center>
 ```C
  for(int i=0; i<dft_M; i++){
@@ -24,7 +24,7 @@ Para a realização do exercício é necessário fazer a transformada de fourier
     }
   }
 ```
-Após determinar o filtro faz-se a convolução do filtro com a matriz da imagem (H(u,v).Z(x,y)), aplica-se a troca dos quadrante novamente e calcula-se a transforma inversa de fourier.
+Após determinar o filtro é feita a convolução do filtro com a matriz da imagem (H(u,v).Z(x,y)) e aplicado a troca dos quadrante novamente, depois calcula-se a transformada inversa de fourier.
 [Código Completo][4]
 
 - # Detecção de bordas com o algoritmo de Canny
@@ -52,8 +52,8 @@ Para resolução a estratégia utilizada foi de gerar duas imagens uma represent
 
 - # Quantização vetorial com k-means
 **Exercício 3:**
-Nesse exercício é abordado o conceito de quantização vetorial e é solicitado que sejam realizadas diversas rodadas a fim de avaliar as diferenças nas imagens geradas
-Para resolução do exercício foi utilizado o algoritmo k-mean gerando os centros de forma aleatória. O algoritmo como dito anteriormente gera os centros de forma aleatória, além disso ele faz o cálculo de distância e cria grupos fazendo as classificações, a medida que que o algoritmo era executado foi possível perceber que as imagens poderiam ser bem diferentes, chegamos a conclusão que isso ocorre dado o fato do nRodadas ser igual a 1 e os centros serem gerados de forma aleatória assim o algoritmo não consegue recalcular e ajustar os grupos o que ocorreria caso o nRodadas fosse maior, ou seja os centros acabam variando muito uma vez que que só são calculados uma vez e podem ser gerados de formas diferentes dado pela aleatoriedade de sua criação.  
+Nesse exercício é abordado o conceito de quantização vetorial e é solicitado que sejam realizadas diversas rodadas a fim de avaliar as diferenças nas imagens geradas.
+Para resolução do exercício foi utilizado o algoritmo k-mean gerando os centros de forma aleatória. O algoritmo como dito anteriormente gera os centros de forma aleatória, além disso ele faz o cálculo de distância e cria grupos fazendo as classificações, a medida que que o algoritmo era executado foi possível perceber que as imagens poderiam ser bem diferentes, chegamos a conclusão que isso ocorre dado o fato do nRodadas ser igual a 1 e os centros serem gerados de forma aleatória, assim o algoritmo não consegue recalcular e ajustar os grupos, o que ocorreria caso o nRodadas fosse maior, ou seja os centros acabam variando muito uma vez que que só são calculados uma vez e podem ser gerados de formas diferentes dado pela aleatoriedade de sua criação.  
 
 <center>Imagem Original<img src="https://i.imgur.com/EgBuoFI.jpg" style="height:200px;"/></center>
 <center>Gif mostrando imagens geradas<img src="blob:https://giovannasevero.imgur.com/e1c9a2b5-433c-4bd8-9f8a-6fb879a8e7d7" style="height:200px;"/></center>
