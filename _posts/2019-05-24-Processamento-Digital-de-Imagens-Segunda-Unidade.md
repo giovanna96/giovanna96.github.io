@@ -29,7 +29,7 @@ Após determinar o filtro é feita a convolução do filtro com a matriz da imag
 
 - # Detecção de bordas com o algoritmo de Canny
 **Exercício 2:**
-No segundo exercícios é solicitado a utilização do algoritmo de Canny para gerar uma imagem em pontilhismo usando os conceitos de borda para melhorar a qualidade da imagem.
+No segundo exercício é solicitado a utilização do algoritmo de Canny para gerar uma imagem em pontilhismo usando os conceitos de borda para melhorar a qualidade da imagem.
 Para resolução a estratégia utilizada foi de gerar duas imagens uma representando a imagem original em pontos e outra aplicando o algoritmo de canny e obtendo as bordas, com isso percorreu-se a imagem contendo as bordas verificando os pixels com valor maior que 0 ao encontrar era criado um circulo na imagem dos pontos, melhorando assim a imagem pontilhada.
 
 ```C
