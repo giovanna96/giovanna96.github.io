@@ -56,11 +56,8 @@ Nesse exercício é abordado o conceito de quantização vetorial e é solicitad
 Para resolução do exercício foi utilizado o algoritmo k-mean gerando os centros de forma aleatória. O algoritmo como dito anteriormente gera os centros de forma aleatória, além disso ele faz o cálculo de distância e cria grupos fazendo as classificações, a medida que que o algoritmo era executado foi possível perceber que as imagens poderiam ser bem diferentes, chegamos a conclusão que isso ocorre dado o fato do nRodadas ser igual a 1 e os centros serem gerados de forma aleatória, assim o algoritmo não consegue recalcular e ajustar os grupos, o que ocorreria caso o nRodadas fosse maior, ou seja os centros acabam variando muito uma vez que que só são calculados uma vez e podem ser gerados de formas diferentes dado pela aleatoriedade de sua criação.  
 
 <center>Imagem Original<img src="https://i.imgur.com/EgBuoFI.jpg" style="height:200px;"/></center>
-<<<<<<< HEAD
-<center>Gif mostrando imagens geradas<img src="https://imgur.com/TcaBWYm" style="height:200px;"/></center>
-=======
-<center>Gif mostrando imagens geradas<img src="blob:https://giovannasevero.imgur.com/e1c9a2b5-433c-4bd8-9f8a-6fb879a8e7d7" style="height:200px;"/></center>
->>>>>>> 4c5913416b6f9d36853d3c6f55fb55c6f80d273a
+<center>Gif mostrando imagens geradas<img src="https://i.imgur.com/TcaBWYm.gif" style="height:200px;"/></center>
+
 
 [Código Completo][6]
 
