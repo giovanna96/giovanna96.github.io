@@ -27,6 +27,9 @@ Para a realização do exercício é necessário fazer a transformada de fourier
 Após determinar o filtro é feita a convolução do filtro com a matriz da imagem (H(u,v).Z(x,y)) e aplicado a troca dos quadrante novamente, depois calcula-se a transformada inversa de fourier.
 [Código Completo][4]
 
+<center>Imagem Original<img src="https://i.imgur.com/CLUksCf.png" style="height:200px;"/></center>
+<center>Imagem Pontos<img src="https://i.imgur.com/Rp5U8IT.png" style="height:200px;"/></center>
+
 - # Detecção de bordas com o algoritmo de Canny
 **Exercício 2:**
 No segundo exercício é solicitado a utilização do algoritmo de Canny para gerar uma imagem em pontilhismo usando os conceitos de borda para melhorar a qualidade da imagem.
@@ -68,6 +71,6 @@ Para resolução do exercício foi utilizado o algoritmo k-mean gerando os centr
 [1]: http://giovanna96.github.io
 [2]: http://joaovictor1996.github.io
 [3]: https://github.com/joaovictor1996/joaovictor1996.github.io/tree/master/PDI
-[4]: https://github.com/joaovictor1996/joaovictor1996.github.io/blob/master/PDI/homomomorfico/homomomorfico.cpp
+[4]: https://github.com/joaovictor1996/joaovictor1996.github.io/blob/master/PDI/homomorfico/homomorfico.cpp
 [5]: https://github.com/joaovictor1996/joaovictor1996.github.io/blob/master/PDI/pontos/pontos.cpp
 [6]: https://github.com/joaovictor1996/joaovictor1996.github.io/blob/master/PDI/kmeans/kmeans.cpp
