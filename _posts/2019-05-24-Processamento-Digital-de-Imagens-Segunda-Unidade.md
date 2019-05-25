@@ -28,7 +28,7 @@ Após determinar o filtro é feita a convolução do filtro com a matriz da imag
 [Código Completo][4]
 
 <center>Imagem Original<img src="https://i.imgur.com/CLUksCf.png" style="height:200px;"/></center>
-<center>Imagem Pontos<img src="https://i.imgur.com/Rp5U8IT.png" style="height:200px;"/></center>
+<center>Imagem Filtro<img src="https://i.imgur.com/Rp5U8IT.png" style="height:200px;"/></center>
 
 - # Detecção de bordas com o algoritmo de Canny
 **Exercício 2:**
